@@ -195,6 +195,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
             item["file_name"] = task.filename
             item["saved_dir"] = task.savedDir
             item["time_created"] = task.timeCreated
+            item["headers"] = task.headers
             array.add(item)
         }
         result.success(array)
@@ -213,6 +214,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
             item["file_name"] = task.filename
             item["saved_dir"] = task.savedDir
             item["time_created"] = task.timeCreated
+            item["headers"] = task.headers
             array.add(item)
         }
         result.success(array)
