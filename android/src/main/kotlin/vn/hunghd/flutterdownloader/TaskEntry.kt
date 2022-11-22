@@ -12,6 +12,7 @@ object TaskEntry : BaseColumns {
     const val COLUMN_NAME_FILE_NAME = "file_name"
     const val COLUMN_NAME_MIME_TYPE = "mime_type"
     const val COLUMN_NAME_RESUMABLE = "resumable"
+    const val COLUMN_NAME_EXTRA = "extra"
     const val COLUMN_NAME_HEADERS = "headers"
     const val COLUMN_NAME_SHOW_NOTIFICATION = "show_notification"
     const val COLUMN_NAME_OPEN_FILE_FROM_NOTIFICATION = "open_file_from_notification"

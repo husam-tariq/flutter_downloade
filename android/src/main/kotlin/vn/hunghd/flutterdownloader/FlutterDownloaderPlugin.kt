@@ -87,6 +87,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
         savedDir: String?,
         filename: String?,
         headers: String?,
+        extra: String?,
         showNotification: Boolean,
         openFileFromNotification: Boolean,
         isResume: Boolean,
@@ -109,6 +110,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
                     .putString(DownloadWorker.ARG_SAVED_DIR, savedDir)
                     .putString(DownloadWorker.ARG_FILE_NAME, filename)
                     .putString(DownloadWorker.ARG_HEADERS, headers)
+                    .putString(DownloadWorker.ARG_EXTRA, extra)
                     .putBoolean(DownloadWorker.ARG_SHOW_NOTIFICATION, showNotification)
                     .putBoolean(
                         DownloadWorker.ARG_OPEN_FILE_FROM_NOTIFICATION,
@@ -164,6 +166,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
         val savedDir: String = call.requireArgument("saved_dir")
         val filename: String? = call.argument("file_name")
         val headers: String = call.requireArgument("headers")
+        val extra: String = call.requireArgument("extra")
         val timeout: Int = call.requireArgument("timeout")
         val showNotification: Boolean = call.requireArgument("show_notification")
         val openFileFromNotification: Boolean = call.requireArgument("open_file_from_notification")
@@ -179,7 +182,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
         sendUpdateProgress(taskId, DownloadStatus.ENQUEUED, 0)
         taskDao!!.insertOrUpdateNewTask(
             taskId, url, DownloadStatus.ENQUEUED, 0, filename,
-            savedDir, headers, showNotification, openFileFromNotification, saveInPublicStorage
+            savedDir, headers,extra, showNotification, openFileFromNotification, saveInPublicStorage
         )
     }
 
@@ -196,6 +199,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
             item["saved_dir"] = task.savedDir
             item["time_created"] = task.timeCreated
             item["headers"] = task.headers
+            item["extra"] = task.extra
             array.add(item)
         }
         result.success(array)
@@ -215,6 +219,7 @@ class FlutterDownloaderPlugin : MethodChannel.MethodCallHandler, FlutterPlugin {
             item["saved_dir"] = task.savedDir
             item["time_created"] = task.timeCreated
             item["headers"] = task.headers
+            item["extra"] = task.extra
             array.add(item)
         }
         result.success(array)

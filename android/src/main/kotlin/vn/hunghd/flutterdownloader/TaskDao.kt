@@ -15,6 +15,7 @@ class TaskDao(private val dbHelper: TaskDbHelper) {
         TaskEntry.COLUMN_NAME_FILE_NAME,
         TaskEntry.COLUMN_NAME_SAVED_DIR,
         TaskEntry.COLUMN_NAME_HEADERS,
+        TaskEntry.COLUMN_NAME_EXTRA,
         TaskEntry.COLUMN_NAME_MIME_TYPE,
         TaskEntry.COLUMN_NAME_RESUMABLE,
         TaskEntry.COLUMN_NAME_OPEN_FILE_FROM_NOTIFICATION,
@@ -31,6 +32,7 @@ class TaskDao(private val dbHelper: TaskDbHelper) {
         fileName: String?,
         savedDir: String?,
         headers: String?,
+        extra: String?,
         showNotification: Boolean,
         openFileFromNotification: Boolean,
         saveInPublicStorage: Boolean
@@ -44,6 +46,7 @@ class TaskDao(private val dbHelper: TaskDbHelper) {
         values.put(TaskEntry.COLUMN_NAME_FILE_NAME, fileName)
         values.put(TaskEntry.COLUMN_NAME_SAVED_DIR, savedDir)
         values.put(TaskEntry.COLUMN_NAME_HEADERS, headers)
+        values.put(TaskEntry.COLUMN_NAME_EXTRA, extra)
         values.put(TaskEntry.COLUMN_NAME_MIME_TYPE, "unknown")
         values.put(TaskEntry.COLUMN_NAME_SHOW_NOTIFICATION, if (showNotification) 1 else 0)
         values.put(
@@ -237,6 +240,7 @@ class TaskDao(private val dbHelper: TaskDbHelper) {
         val filename = cursor.getString(cursor.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_FILE_NAME))
         val savedDir = cursor.getString(cursor.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_SAVED_DIR))
         val headers = cursor.getString(cursor.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_HEADERS))
+        val extra = cursor.getString(cursor.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_EXTRA))
         val mimeType = cursor.getString(cursor.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_MIME_TYPE))
         val resumable = cursor.getShort(cursor.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_RESUMABLE)).toInt()
         val showNotification = cursor.getShort(cursor.getColumnIndexOrThrow(TaskEntry.COLUMN_NAME_SHOW_NOTIFICATION)).toInt()
@@ -252,6 +256,7 @@ class TaskDao(private val dbHelper: TaskDbHelper) {
             filename,
             savedDir,
             headers,
+            extra,
             mimeType,
             resumable == 1,
             showNotification == 1,

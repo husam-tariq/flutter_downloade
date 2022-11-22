@@ -60,6 +60,7 @@ class DownloadTask {
     required this.savedDir,
     required this.timeCreated,
     this.headers,
+    this.extra,
   });
 
   /// Unique identifier of this task.
@@ -78,6 +79,8 @@ class DownloadTask {
   final String? filename;
 
   final String? headers;
+  
+  final String? extra;
 
   /// Absolute path to the directory where the downloaded file will saved.
   final String savedDir;

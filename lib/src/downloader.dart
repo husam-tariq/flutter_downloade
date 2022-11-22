@@ -161,6 +161,7 @@ class FlutterDownloader {
             savedDir: item['saved_dir'] as String,
             timeCreated: item['time_created'] as int,
             headers: item['headers'] as String?,
+            extra: item['extra'] as String?,
           );
         },
       ).toList();
@@ -218,6 +219,8 @@ class FlutterDownloader {
             filename: item['file_name'] as String?,
             savedDir: item['saved_dir'] as String,
             timeCreated: item['time_created'] as int,
+            headers: item['headers'] as String?,
+            extra: item['extra'] as String?,
           );
         },
       ).toList();

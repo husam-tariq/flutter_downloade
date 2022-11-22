@@ -832,6 +832,7 @@ class DownloadWorker(context: Context, params: WorkerParameters) :
         const val ARG_FILE_NAME = "file_name"
         const val ARG_SAVED_DIR = "saved_file"
         const val ARG_HEADERS = "headers"
+        const val ARG_EXTRA = "extra"
         const val ARG_IS_RESUME = "is_resume"
         const val ARG_TIMEOUT = "timeout"
         const val ARG_SHOW_NOTIFICATION = "show_notification"
